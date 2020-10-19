@@ -566,8 +566,8 @@ prompt_kctx() {
 prompt_virtualenv() {
   if [[ -n $VIRTUAL_ENV_DISABLE_PROMPT ]]; then
     local virtualenv_path="$VIRTUAL_ENV"
-    if [[ -n $CONDA_DEFAULT_ENV && "CONDA_DEFAULT_ENV" != "base" ]]; then
-      prompt_segment $BULLETTRAIN_VIRTUALENV_BG $BULLETTRAIN_VIRTUALENV_FG $BULLETTRAIN_VIRTUALENV_PREFIX" $CONDA_DEFAULT_ENV"
+    if [[ -n "$CONDA_PROMPT_MODIFIER" ]]; then
+      prompt_segment $BULLETTRAIN_VIRTUALENV_BG $BULLETTRAIN_VIRTUALENV_FG $BULLETTRAIN_VIRTUALENV_PREFIX" $CONDA_PROMPT_MODIFIER"
     elif [[ -n $virtualenv_path ]]; then
       prompt_segment $BULLETTRAIN_VIRTUALENV_BG $BULLETTRAIN_VIRTUALENV_FG $BULLETTRAIN_VIRTUALENV_PREFIX" $(basename $virtualenv_path)"
     elif which pyenv &> /dev/null; then
